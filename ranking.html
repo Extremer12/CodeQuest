@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>CodeQuest - Clasificación</title>
+    
+    <!-- PWA Settings -->
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#171f33" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-high": "#222a3d",
+                        "primary-container": "#a078ff",
+                        "on-secondary-fixed": "#001a42",
+                        "secondary": "#adc6ff",
+                        "on-primary": "#3c0091",
+                        "on-primary-fixed-variant": "#5516be",
+                        "surface-container-highest": "#2d3449",
+                        "surface-dim": "#0b1326",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "background": "#0b1326",
+                        "on-error-container": "#ffdad6",
+                        "inverse-on-surface": "#283044",
+                        "surface-variant": "#2d3449",
+                        "on-secondary": "#002e6a",
+                        "on-primary-container": "#340080",
+                        "on-error": "#690005",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "tertiary-fixed": "#6ffbbe",
+                        "on-primary-fixed": "#23005c",
+                        "on-tertiary": "#003824",
+                        "on-tertiary-fixed": "#002113",
+                        "on-surface": "#dae2fd",
+                        "surface-container": "#171f33",
+                        "primary-fixed-dim": "#d0bcff",
+                        "error": "#ffb4ab",
+                        "surface-tint": "#d0bcff",
+                        "tertiary": "#4edea3",
+                        "inverse-surface": "#dae2fd",
+                        "tertiary-container": "#00a572",
+                        "outline": "#958ea0",
+                        "secondary-fixed": "#d8e2ff",
+                        "inverse-primary": "#6d3bd7",
+                        "on-background": "#dae2fd",
+                        "on-secondary-fixed-variant": "#004395",
+                        "on-surface-variant": "#cbc3d7",
+                        "surface": "#0b1326",
+                        "on-tertiary-container": "#00311f",
+                        "surface-container-lowest": "#060e20",
+                        "secondary-container": "#0566d9",
+                        "outline-variant": "#494454",
+                        "error-container": "#93000a",
+                        "primary": "#d0bcff",
+                        "surface-container-low": "#131b2e",
+                        "on-secondary-container": "#e6ecff",
+                        "surface-bright": "#31394d",
+                        "primary-fixed": "#e9ddff"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .glass-panel {
+            background: rgba(45, 52, 73, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(149, 142, 160, 0.15);
+        }
+        .neon-glow-primary {
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-surface-container-lowest text-on-surface font-body selection:bg-primary/30 min-h-screen flex flex-col md:flex-row">
+
+<!-- SideNavBar -->
+<nav class="fixed left-0 top-0 h-full w-72 border-r border-[#2d3449]/30 bg-[#060e20] flex flex-col py-8 z-40 hidden md:flex">
+    <div class="px-8 mb-10">
+        <h1 class="text-xl font-bold text-[#8b5cf6] font-headline tracking-widest">CODEQUEST</h1>
+    </div>
+    <div class="flex-grow space-y-2 overflow-y-auto">
+        <a class="text-[#dae2fd]/40 flex items-center gap-4 px-6 py-4 w-full hover:bg-[#131b2e]/50 font-['Inter'] text-sm uppercase tracking-widest transition-all duration-200" href="index.html">
+            <span class="material-symbols-outlined">map</span>
+            <span>Ruta de Aprendizaje</span>
+        </a>
+        <a class="text-[#dae2fd]/40 flex items-center gap-4 px-6 py-4 w-full hover:bg-[#131b2e]/50 font-['Inter'] text-sm uppercase tracking-widest transition-all duration-200" href="lab.html">
+            <span class="material-symbols-outlined">terminal</span>
+            <span>Laboratorio</span>
+        </a>
+        <a class="bg-[#131b2e] text-[#8b5cf6] border-l-4 border-[#8b5cf6] flex items-center gap-4 px-6 py-4 w-full font-['Inter'] text-sm uppercase tracking-widest" href="ranking.html">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+            <span>Clasificación</span>
+        </a>
+        <a class="text-[#dae2fd]/40 flex items-center gap-4 px-6 py-4 w-full hover:bg-[#131b2e]/50 font-['Inter'] text-sm uppercase tracking-widest transition-all duration-200" href="profile.html">
+            <span class="material-symbols-outlined">account_circle</span>
+            <span>Mi Perfil</span>
+        </a>
+    </div>
+    <div class="px-6 py-6 border-t border-outline-variant/10">
+        <div class="flex items-center gap-3 mb-6 p-3 rounded-lg bg-surface-container-low">
+            <div class="w-10 h-10 rounded-full overflow-hidden border border-primary/30">
+                <img alt="User Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkPsW5jOTzc143rYpN-tl3BwWlXJ3yfXrOg9Z89oWYiUwPKqd_8bNwnuWcyc5lJlBk_yHs85Bok3mIRgK7QUqP2n_nVkeqCzDIRsU9ETlxMUHGPaBHR3frrcDpK2qXleEGXrHaEwvQcDl7sufWjkvO4BXMkAecw2zZ6mBgFUEEl3c0h_edX4sOlRHo4tmAcTfsRcOicD5iQj4VLY5l3pejDgwEQuXCoX5OvU9mU17nYELag12HqBGFgHrpwxs8habsQiYfw_0ommn9"/>
+            </div>
+            <div>
+                <p class="text-xs font-bold text-primary tracking-tighter">Neon Scribe</p>
+                <p class="text-[10px] text-tertiary">Rango: Obsidiana</p>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Main Area -->
+<main class="md:ml-72 flex-1 p-8 space-y-10 bg-surface">
+    <!-- Header -->
+    <header class="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-outline-variant/20">
+        <div>
+            <h2 class="text-4xl font-headline font-black text-on-surface tracking-tight mb-2">Salón de la Fama</h2>
+            <p class="text-on-surface-variant font-light">Competencia global de lógica algorítmica.</p>
+        </div>
+        
+        <div class="glass-panel px-6 py-4 rounded-xl flex items-center gap-6 border border-primary/20 neon-glow-primary">
+            <div>
+                <p class="text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-1">Tu Rango</p>
+                <p class="font-headline font-bold text-2xl text-primary flex items-center">#<span id="userRankNumber">412</span></p>
+            </div>
+            <div class="w-px h-10 bg-outline-variant/30"></div>
+            <div>
+                <p class="text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-1">Tu XP</p>
+                <p class="font-headline font-bold text-2xl text-tertiary"><span id="userRankXp">1,240</span></p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Leaderboard List -->
+    <section class="max-w-4xl mx-auto space-y-3 pb-24">
+        <!-- Top 3 -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 pt-8">
+            <!-- Rank 2 -->
+            <div class="glass-panel p-6 rounded-2xl flex flex-col items-center justify-end border-t-4 border-slate-300 md:-translate-y-4 relative">
+                <div class="absolute -top-8 w-16 h-16 rounded-full border-4 border-slate-300 overflow-hidden shadow-[0_0_20px_rgba(203,213,225,0.4)]">
+                    <img src="https://i.pravatar.cc/150?img=11" alt="Rank 2" class="w-full h-full object-cover">
+                </div>
+                <h3 class="text-xl font-bold font-headline mt-6 mb-1 text-on-surface">AlexByte</h3>
+                <p class="text-sm font-bold text-slate-400 font-mono tracking-widest">3,850 XP</p>
+                <div class="mt-4 bg-slate-300 text-slate-800 text-xs font-black w-8 h-8 rounded-full flex items-center justify-center">2</div>
+            </div>
+            <!-- Rank 1 -->
+            <div class="glass-panel p-6 rounded-2xl flex flex-col items-center justify-end border-t-4 border-yellow-400 md:-translate-y-12 relative shadow-[0_0_30px_rgba(250,204,21,0.2)]">
+                <div class="absolute -top-10 w-20 h-20 rounded-full border-4 border-yellow-400 overflow-hidden shadow-[0_0_30px_rgba(250,204,21,0.5)]">
+                    <img src="https://i.pravatar.cc/150?img=33" alt="Rank 1" class="w-full h-full object-cover">
+                </div>
+                <span class="material-symbols-outlined absolute -top-16 text-yellow-400 text-4xl" style="font-variation-settings: 'FILL' 1;">crown</span>
+                <h3 class="text-2xl font-black font-headline mt-8 mb-1 text-on-surface">KodeNinja</h3>
+                <p class="text-sm font-bold text-yellow-400 font-mono tracking-widest">4,200 XP</p>
+                <div class="mt-4 bg-yellow-400 text-yellow-900 text-xs font-black w-8 h-8 rounded-full flex items-center justify-center">1</div>
+            </div>
+            <!-- Rank 3 -->
+            <div class="glass-panel p-6 rounded-2xl flex flex-col items-center justify-end border-t-4 border-orange-400 md:-translate-y-2 relative">
+                <div class="absolute -top-7 w-14 h-14 rounded-full border-4 border-orange-400 overflow-hidden shadow-[0_0_20px_rgba(251,146,60,0.4)]">
+                    <img src="https://i.pravatar.cc/150?img=47" alt="Rank 3" class="w-full h-full object-cover">
+                </div>
+                <h3 class="text-xl font-bold font-headline mt-6 mb-1 text-on-surface">SyntaxSorceress</h3>
+                <p class="text-sm font-bold text-orange-400 font-mono tracking-widest">3,120 XP</p>
+                <div class="mt-4 bg-orange-400 text-orange-950 text-xs font-black w-8 h-8 rounded-full flex items-center justify-center">3</div>
+            </div>
+        </div>
+
+        <!-- Remaining Ranks -->
+        <div class="glass-panel rounded-2xl overflow-hidden divide-y divide-outline-variant/10">
+            <!-- 4 -->
+            <div class="flex items-center justify-between p-4 hover:bg-white/5 transition-colors">
+                <div class="flex items-center gap-6">
+                    <span class="w-8 flex justify-center text-slate-500 font-bold font-mono">4</span>
+                    <div class="w-10 h-10 rounded-full overflow-hidden border border-primary/20"><img src="https://i.pravatar.cc/150?img=12" class="w-full h-full object-cover"></div>
+                    <span class="font-bold">LogicLoom</span>
+                </div>
+                <span class="font-mono text-tertiary">2,890 XP</span>
+            </div>
+            <!-- 5 -->
+            <div class="flex items-center justify-between p-4 hover:bg-white/5 transition-colors">
+                <div class="flex items-center gap-6">
+                    <span class="w-8 flex justify-center text-slate-500 font-bold font-mono">5</span>
+                    <div class="w-10 h-10 rounded-full overflow-hidden border border-primary/20"><img src="https://i.pravatar.cc/150?img=15" class="w-full h-full object-cover"></div>
+                    <span class="font-bold">BugBuster</span>
+                </div>
+                <span class="font-mono text-tertiary">2,750 XP</span>
+            </div>
+
+            <!-- Separator indicating more users -->
+            <div class="p-6 flex justify-center">
+                <span class="material-symbols-outlined text-outline-variant">more_vert</span>
+            </div>
+
+            <!-- Current User Inserted Here -->
+            <div class="flex items-center justify-between p-4 bg-primary/10 border-l-4 border-primary">
+                <div class="flex items-center gap-6">
+                    <span class="w-8 flex justify-center text-primary font-bold font-mono" id="simulatedRank">412</span>
+                    <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary neon-glow-primary">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkPsW5jOTzc143rYpN-tl3BwWlXJ3yfXrOg9Z89oWYiUwPKqd_8bNwnuWcyc5lJlBk_yHs85Bok3mIRgK7QUqP2n_nVkeqCzDIRsU9ETlxMUHGPaBHR3frrcDpK2qXleEGXrHaEwvQcDl7sufWjkvO4BXMkAecw2zZ6mBgFUEEl3c0h_edX4sOlRHo4tmAcTfsRcOicD5iQj4VLY5l3pejDgwEQuXCoX5OvU9mU17nYELag12HqBGFgHrpwxs8habsQiYfw_0ommn9" class="w-full h-full object-cover">
+                    </div>
+                    <span class="font-bold text-primary">Neon Scribe (Tú)</span>
+                </div>
+                <span class="font-mono text-primary font-bold" id="simulatedXp">1,240 XP</span>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-[#060e20]/80 backdrop-blur-md px-6 py-4 flex justify-around items-center border-t border-outline-variant/10 z-50">
+    <a href="index.html" class="material-symbols-outlined text-[#dae2fd]/40">map</a>
+    <a href="lab.html" class="material-symbols-outlined text-[#dae2fd]/40">terminal</a>
+    <a href="ranking.html" class="material-symbols-outlined text-[#8b5cf6]" style="font-variation-settings: 'FILL' 1;">workspace_premium</a>
+    <a href="profile.html" class="material-symbols-outlined text-[#dae2fd]/40">account_circle</a>
+</nav>
+
+<script>
+    function syncRanking() {
+        const stats = JSON.parse(localStorage.getItem('codequest_stats')) || { xp: 1240, streak: 12 };
+        const userXp = stats.xp;
+        
+        // Simular que el rango mejora si ganas más XP
+        // Por poner un cálculo chulo:
+        let rank = Math.max(1, 500 - Math.floor((userXp - 1000) / 10));
+        
+        document.getElementById('userRankNumber').innerText = rank;
+        document.getElementById('userRankXp').innerText = userXp.toLocaleString();
+        
+        document.getElementById('simulatedRank').innerText = rank;
+        document.getElementById('simulatedXp').innerText = userXp.toLocaleString() + ' XP';
+    }
+
+    window.addEventListener('load', syncRanking);
+    window.addEventListener('focus', syncRanking);
+</script>
+
+</body>
+</html>

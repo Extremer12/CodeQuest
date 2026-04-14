@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>CodeQuest | Learning Lab</title>
+
+    <!-- PWA Settings -->
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#171f33" />
+    
+    <!-- Tailwind via CDN -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
+    <!-- Local CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "error": "#ffb4ab",
+                        "on-primary-container": "#340080",
+                        "background": "#0b1326",
+                        "on-surface-variant": "#cbc3d7",
+                        "on-background": "#dae2fd",
+                        "surface-container": "#171f33",
+                        "surface": "#0b1326",
+                        "inverse-primary": "#6d3bd7",
+                        "surface-container-high": "#222a3d",
+                        "outline": "#958ea0",
+                        "surface-container-low": "#131b2e",
+                        "primary": "#d0bcff",
+                        "outline-variant": "#494454",
+                        "surface-variant": "#2d3449",
+                        "primary-container": "#a078ff",
+                        "surface-container-highest": "#2d3449",
+                        "tertiary": "#4edea3",
+                        "secondary": "#adc6ff",
+                        "on-tertiary": "#003824"
+                    },
+                    fontFamily: {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"],
+                        "mono": ["Fira Code"]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="h-screen flex flex-col">
+    <!-- TopNavBar Implementation -->
+    <header class="fixed top-0 w-full z-50 bg-slate-950/60 backdrop-blur-xl shadow-[0_0_40px_rgba(173,198,255,0.05)] flex justify-between items-center px-6 h-16 w-full">
+        <div class="flex items-center gap-4">
+            <span class="text-2xl font-bold bg-gradient-to-br from-violet-400 to-violet-600 bg-clip-text text-transparent font-['Space_Grotesk'] tracking-tight">CodeQuest</span>
+            <nav class="hidden md:flex gap-6 ml-8">
+                <a class="text-slate-400 hover:bg-slate-800/50 transition-colors px-3 py-1 rounded-md" href="index.html">Ruta</a>
+                <a class="text-violet-400 font-bold transition-colors" href="#">Laboratorio</a>
+                <a class="text-slate-400 hover:bg-slate-800/50 transition-colors px-3 py-1 rounded-md" href="profile.html">Perfil</a>
+            </nav>
+        </div>
+        <div class="flex items-center gap-6">
+            <div class="flex items-center gap-4 text-slate-400">
+                <div class="flex items-center gap-1 group cursor-default">
+                    <span class="material-symbols-outlined text-orange-500" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+                    <span class="font-bold text-on-background">12</span>
+                </div>
+                <div class="flex items-center gap-1 group cursor-default">
+                    <span class="material-symbols-outlined text-error" style="font-variation-settings: 'FILL' 1;">favorite</span>
+                    <span class="font-bold text-on-background">5</span>
+                </div>
+                <div class="flex items-center gap-1 group cursor-default">
+                    <span class="material-symbols-outlined text-yellow-400" style="font-variation-settings: 'FILL' 1;">stars</span>
+                    <span class="font-bold text-on-background">1,240</span>
+                </div>
+            </div>
+            <a href="profile.html" class="w-10 h-10 rounded-full border-2 border-primary overflow-hidden hover:scale-105 transition-transform cursor-pointer">
+                <img alt="User avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRvXPnYKqxN2reN3sPnuidft0fyiiU6I-unfC0e-iCNMOoaNjHJiBs83XcoiQDmh1P2CzqqHsBnD-2JuNfDXNn4Rkxb8046wTt4pJ9qMYwZ1_E6POczsabk7U_bfRxaCLX89EuDBN0mCk2oL-QYheY3W0BHEVauZXt_Uvyd4fDtCdEFfkOheTssAmd3-jWwTK7wCmjyrWc9TPAMV_OM-xrggFe7ggbrvWX2z_2oB67qDQMQ_8jkVGcKLnEgRw_XvYDOf88xW276umn"/>
+            </a>
+        </div>
+    </header>
+    
+    <main class="flex-1 flex pt-16 h-screen overflow-hidden">
+        <!-- SideNavBar / Left Panel (30%) -->
+        <aside class="w-[30%] bg-slate-950 flex flex-col border-r border-outline-variant/15">
+            <div class="flex flex-col py-8 px-8 space-y-8 overflow-y-auto custom-scrollbar">
+                <!-- Current Lesson Header -->
+                <div class="space-y-2">
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center">
+                            <span class="material-symbols-outlined text-primary text-3xl">terminal</span>
+                        </div>
+                        <div>
+                            <h2 id="lessonModule" class="font-headline text-xl font-bold text-on-background leading-none">JavaScript Básico</h2>
+                            <p id="lessonLevel" class="text-sm text-slate-500">Nivel 1: Introducción</p>
+                        </div>
+                    </div>
+                    <div class="w-full bg-surface-container-highest h-2 rounded-full mt-4 overflow-hidden">
+                        <div id="progressBar" class="bg-tertiary h-full w-[10%] shadow-[0_0_10px_rgba(78,222,163,0.3)] transition-all duration-500"></div>
+                    </div>
+                </div>
+                
+                <!-- Theory Card -->
+                <div id="theoryCard" class="bg-surface-container-low p-6 rounded-lg border border-outline-variant/10 space-y-4">
+                    <div class="flex items-center gap-2">
+                        <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-primary/20 text-primary">Concepto Clave</span>
+                    </div>
+                    <h3 id="theoryTitle" class="text-xl font-headline font-bold text-primary">Cargando...</h3>
+                    <p id="theoryText" class="text-on-surface-variant leading-relaxed text-sm">
+                        Seleccionando lección...
+                    </p>
+                    <div class="bg-surface-container-lowest p-4 rounded-md border-l-4 border-tertiary">
+                        <p class="text-xs font-mono text-slate-400 italic">// Ejemplo rápido</p>
+                        <code id="theoryExample" class="text-sm font-mono block mt-1">
+                        </code>
+                    </div>
+                </div>
+                
+                <!-- Gamification Tasks -->
+                <div class="space-y-4">
+                    <h4 class="text-xs font-bold text-slate-500 uppercase tracking-widest">Tareas de Hoy</h4>
+                    <div id="taskList" class="space-y-3">
+                        <!-- Inyectado desde JS -->
+                    </div>
+                </div>
+                
+                <!-- CTA -->
+                <div class="mt-auto">
+                    <a href="index.html" class="flex items-center justify-center gap-2 w-full py-4 rounded-full border border-primary/20 text-primary font-bold hover:bg-primary/10 transition-all duration-200">
+                        <span class="material-symbols-outlined">arrow_back</span>
+                        Volver al Mapa
+                    </a>
+                </div>
+            </div>
+        </aside>
+        
+        <!-- Right Panels (70%) -->
+        <section class="flex-1 flex flex-col bg-surface-container-low relative">
+            <!-- Editor Header -->
+            <div class="h-12 border-b border-outline-variant/10 flex items-center justify-between px-6 bg-surface-container-lowest">
+                <div class="flex items-center gap-4 h-full">
+                    <div class="h-full border-b-2 border-primary px-4 flex items-center gap-2 bg-surface-container-low/50">
+                        <span class="material-symbols-outlined text-sm text-yellow-500" style="font-variation-settings: 'FILL' 1;">javascript</span>
+                        <span class="text-xs font-mono font-medium text-on-surface">index.js</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <button class="p-1.5 rounded hover:bg-slate-800 transition-colors">
+                        <span class="material-symbols-outlined text-sm">settings</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Code Editor Space -->
+            <div class="flex-1 flex overflow-hidden relative">
+                <!-- Line Numbers Gutter -->
+                <div class="w-12 pt-6 flex flex-col items-end pr-4 text-[13px] font-mono text-slate-600 bg-surface-container-low/30 select-none editor-line-numbers">
+                    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+                
+                <!-- Main Editor Area -->
+                <div class="flex-1 relative group">
+                    <div id="monacoEditor" class="absolute inset-0 w-full h-full"></div>
+                </div>
+                
+                <!-- Run Button Floating -->
+                <button class="absolute bottom-8 right-8 z-20 flex items-center gap-3 px-8 py-4 rounded-full bg-tertiary text-on-tertiary font-bold shadow-[0_0_25px_rgba(78,222,163,0.4)] hover:scale-105 active:scale-95 transition-all group" id="runBtn">
+                    <span class="material-symbols-outlined font-bold group-hover:rotate-12 transition-transform" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+                    Ejecutar Código
+                </button>
+            </div>
+            
+            <!-- Terminal Console (Bottom) -->
+            <div class="h-1/3 bg-slate-950/80 backdrop-blur-md border-t border-outline-variant/20 flex flex-col">
+                <div class="px-6 py-2 border-b border-outline-variant/10 flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-sm text-slate-500">terminal</span>
+                        <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Console Output</span>
+                    </div>
+                    <button class="text-[10px] text-slate-500 hover:text-on-background transition-colors uppercase font-bold" id="clearConsole">Clear</button>
+                </div>
+                <div class="flex-1 p-6 font-mono text-sm overflow-y-auto custom-scrollbar space-y-2" id="consoleOutput">
+                    <div class="text-slate-500 flex gap-3">
+                        <span class="text-tertiary opacity-50">❯</span>
+                        <span>Waiting for execution...</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Success Modal -->
+    <div class="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/80 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300" id="successModal">
+        <div class="bg-surface-container-low border border-outline-variant/20 p-10 rounded-lg max-w-md w-full text-center space-y-6 shadow-2xl transform scale-90 transition-transform duration-300">
+            <div class="relative inline-block">
+                <div class="absolute inset-0 bg-tertiary blur-3xl opacity-20"></div>
+                <span class="material-symbols-outlined text-8xl text-tertiary relative" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+            </div>
+            <div class="space-y-2">
+                <h2 class="font-headline text-4xl font-bold text-on-background">¡Nivel Completado!</h2>
+                <p class="text-on-surface-variant">Has dominado la impresión en consola con JavaScript.</p>
+            </div>
+            <div class="flex items-center justify-center gap-8 py-4">
+                <div class="text-center">
+                    <p class="text-xs text-slate-500 font-bold uppercase tracking-widest">XP Ganado</p>
+                    <p class="text-2xl font-headline font-bold text-tertiary">+10</p>
+                </div>
+                <div class="h-10 w-px bg-outline-variant/20"></div>
+                <div class="text-center">
+                    <p class="text-xs text-slate-500 font-bold uppercase tracking-widest">Racha</p>
+                    <p class="text-2xl font-headline font-bold text-orange-500">12 Días</p>
+                </div>
+            </div>
+            <button class="w-full py-4 rounded-full bg-tertiary text-on-tertiary font-bold shadow-lg hover:brightness-110 active:scale-95 transition-all" id="continueBtn">
+                Siguiente Lección
+            </button>
+        </div>
+    </div>
+
+    <!-- Background Decoration -->
+    <div class="fixed -bottom-32 -left-32 w-96 h-96 bg-primary/10 rounded-full blur-[120px] pointer-events-none z-[-1]"></div>
+    <div class="fixed top-1/2 -right-32 w-80 h-80 bg-tertiary/5 rounded-full blur-[100px] pointer-events-none z-[-1]"></div>
+
+    <!-- Monaco Editor Loader -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.44.0/min/vs/loader.min.js"></script>
+    
+    <!-- Local logic -->
+    <script src="app.js"></script>
+</body>
+</html>

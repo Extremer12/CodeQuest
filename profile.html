@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>CodeQuest - Perfil de Usuario</title>
+    
+    <!-- PWA Settings -->
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#171f33" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-high": "#222a3d",
+                        "primary-container": "#a078ff",
+                        "on-secondary-fixed": "#001a42",
+                        "secondary": "#adc6ff",
+                        "on-primary": "#3c0091",
+                        "on-primary-fixed-variant": "#5516be",
+                        "surface-container-highest": "#2d3449",
+                        "surface-dim": "#0b1326",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "background": "#0b1326",
+                        "on-error-container": "#ffdad6",
+                        "inverse-on-surface": "#283044",
+                        "surface-variant": "#2d3449",
+                        "on-secondary": "#002e6a",
+                        "on-primary-container": "#340080",
+                        "on-error": "#690005",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "tertiary-fixed": "#6ffbbe",
+                        "on-primary-fixed": "#23005c",
+                        "on-tertiary": "#003824",
+                        "on-tertiary-fixed": "#002113",
+                        "on-surface": "#dae2fd",
+                        "surface-container": "#171f33",
+                        "primary-fixed-dim": "#d0bcff",
+                        "error": "#ffb4ab",
+                        "surface-tint": "#d0bcff",
+                        "tertiary": "#4edea3",
+                        "inverse-surface": "#dae2fd",
+                        "tertiary-container": "#00a572",
+                        "outline": "#958ea0",
+                        "secondary-fixed": "#d8e2ff",
+                        "inverse-primary": "#6d3bd7",
+                        "on-background": "#dae2fd",
+                        "on-secondary-fixed-variant": "#004395",
+                        "on-surface-variant": "#cbc3d7",
+                        "surface": "#0b1326",
+                        "on-tertiary-container": "#00311f",
+                        "surface-container-lowest": "#060e20",
+                        "secondary-container": "#0566d9",
+                        "outline-variant": "#494454",
+                        "error-container": "#93000a",
+                        "primary": "#d0bcff",
+                        "surface-container-low": "#131b2e",
+                        "on-secondary-container": "#e6ecff",
+                        "surface-bright": "#31394d",
+                        "primary-fixed": "#e9ddff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .glass-panel {
+            background: rgba(45, 52, 73, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(149, 142, 160, 0.15);
+        }
+        .neon-glow-primary {
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
+        }
+        .neon-glow-tertiary {
+            box-shadow: 0 0 15px rgba(78, 222, 163, 0.3);
+        }
+        .activity-cell {
+            width: 12px;
+            height: 12px;
+            border-radius: 2px;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-surface-container-lowest text-on-surface font-body selection:bg-primary/30">
+<!-- SideNavBar -->
+<nav class="fixed left-0 top-0 h-full w-72 border-r border-[#2d3449]/30 bg-[#060e20] flex flex-col py-8 z-40 hidden md:flex">
+<div class="px-8 mb-10">
+<h1 class="text-xl font-bold text-[#8b5cf6] font-headline tracking-widest">CODEQUEST</h1>
+</div>
+<div class="flex-grow space-y-2 overflow-y-auto scrollbar-hide">
+<a class="text-[#dae2fd]/40 flex items-center gap-4 px-6 py-4 w-full hover:bg-[#131b2e]/50 font-['Inter'] text-sm uppercase tracking-widest transition-all duration-200" href="index.html">
+<span class="material-symbols-outlined">map</span>
+<span>Ruta de Aprendizaje</span>
+</a>
+<a class="text-[#dae2fd]/40 flex items-center gap-4 px-6 py-4 w-full hover:bg-[#131b2e]/50 font-['Inter'] text-sm uppercase tracking-widest transition-all duration-200" href="lab.html">
+<span class="material-symbols-outlined">terminal</span>
+<span>Laboratorio</span>
+</a>
+<a class="text-[#dae2fd]/40 flex items-center gap-4 px-6 py-4 w-full hover:bg-[#131b2e]/50 font-['Inter'] text-sm uppercase tracking-widest transition-all duration-200" href="#">
+<span class="material-symbols-outlined">emoji_events</span>
+<span>Arena de Algoritmos</span>
+</a>
+<!-- Active State: User Archives maps to Profile -->
+<a class="bg-[#131b2e] text-[#8b5cf6] border-l-4 border-[#8b5cf6] flex items-center gap-4 px-6 py-4 w-full font-['Inter'] text-sm uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+<span>Mi Perfil</span>
+</a>
+</div>
+<div class="px-6 py-6 border-t border-outline-variant/10">
+<div class="flex items-center gap-3 mb-6 p-3 rounded-lg bg-surface-container-low">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-primary/30">
+<img alt="User Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkPsW5jOTzc143rYpN-tl3BwWlXJ3yfXrOg9Z89oWYiUwPKqd_8bNwnuWcyc5lJlBk_yHs85Bok3mIRgK7QUqP2n_nVkeqCzDIRsU9ETlxMUHGPaBHR3frrcDpK2qXleEGXrHaEwvQcDl7sufWjkvO4BXMkAecw2zZ6mBgFUEEl3c0h_edX4sOlRHo4tmAcTfsRcOicD5iQj4VLY5l3pejDgwEQuXCoX5OvU9mU17nYELag12HqBGFgHrpwxs8habsQiYfw_0ommn9"/>
+</div>
+<div>
+<p class="text-xs font-bold text-primary tracking-tighter">Neon Scribe</p>
+<p class="text-[10px] text-tertiary">Rango: Obsidiana</p>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="md:ml-72 min-h-screen bg-surface">
+<!-- Top Header Profile Section -->
+<header class="relative h-80 flex items-end px-8 pb-10 overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img alt="Header Background" class="w-full h-full object-cover opacity-30" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCts7pNl2rMEml5gxx1hMgEftvZPE6ql0nfmaa7YY5NysEHLMQmiaCYXAIHReONaelsVHU08HTav2t0wqlNCgg31CJ-BdZwbH3agant5sUp6CvKeZlFKN3Lj8LoWY5O_k7hclTHxD9avzckKPQLgaMH9uxhF11Z4pYWiAKwJHWBz4rubrXLqCaOZmupybH9fJ8o08zNjVgbbsjkgAGVLfe00_KwD_EX4U8dFUfg6f2pR_F0L5Hi_3gp2TwSzsLMi8uVBD8bFbXXTzxq"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-surface/60 to-transparent"></div>
+</div>
+<div class="relative z-10 flex flex-col md:flex-row items-center md:items-end gap-8 w-full max-w-6xl mx-auto">
+<div class="relative group">
+<div class="w-40 h-40 rounded-full border-4 border-primary p-1 bg-surface-container-lowest neon-glow-primary">
+<img alt="User profile avatar" class="w-full h-full object-cover rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdx85bWOq5nHbysum_gXbOCLFe4LFDGWyymmJeiv71XL_7p3lDICy9OVPQU0B5eI8GR2ospHAgx0Cg6xK9SA6jixRJ6gVhX2RWWaWVmEzXMmX1GB8gWC0xh9tWZBi9nHvfU5XTYJcXH43Y8lwQ7MYX3_4F_mjv1Y-Ia__FD6tlGPCslQ6juI4q_mjSM7bWQpmT66l-jFGHt6k_gLsIjjmmbhXWiVkVj-0DoFy80LRC1cifm4ZmG18MRw6qwlT-6jBgWmM-rjd3tmJd"/>
+</div>
+<div class="absolute -bottom-2 -right-2 bg-tertiary text-on-tertiary text-xs font-black h-12 w-12 rounded-full flex items-center justify-center border-4 border-surface neon-glow-tertiary font-headline">
+                        L42
+                    </div>
+</div>
+<div class="flex-grow text-center md:text-left">
+<div class="flex flex-col md:flex-row md:items-center gap-2 md:gap-6 mb-2">
+<h2 class="text-4xl md:text-6xl font-black font-headline text-on-surface tracking-tight">Neon Scribe</h2>
+<span class="px-4 py-1 rounded-full bg-surface-container-highest border border-outline-variant/30 text-tertiary font-headline text-sm tracking-widest flex items-center justify-center">
+<span class="material-symbols-outlined text-sm mr-2">military_tech</span>
+                            Rango Obsidiana
+                        </span>
+</div>
+<p class="text-on-surface-variant max-w-xl font-light">"Arquitecto del Vacío. Traduciendo impulsos neuronales en sintaxis de obsidiana desde el Nivel 0."</p>
+</div>
+<div class="flex gap-3">
+<button class="bg-surface-container-highest hover:bg-surface-bright px-6 py-3 rounded-full font-bold text-sm transition-all border border-outline-variant/20">Editar Perfil</button>
+<button class="bg-gradient-to-r from-primary to-primary-container text-on-primary px-8 py-3 rounded-full font-bold text-sm shadow-xl hover:scale-105 transition-all">Compartir Log</button>
+</div>
+</div>
+</header>
+<section class="p-8 max-w-6xl mx-auto space-y-12 pb-24">
+<!-- Stats Bento Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="glass-panel p-6 rounded-lg relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-5xl">bolt</span>
+</div>
+<p class="text-on-surface-variant text-xs font-bold uppercase tracking-widest mb-1">Racha Actual</p>
+<h3 class="text-3xl font-black font-headline text-tertiary">12 días</h3>
+<div class="mt-4 h-1 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full w-2/3 bg-tertiary neon-glow-tertiary"></div>
+</div>
+</div>
+<div class="glass-panel p-6 rounded-lg relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-5xl">database</span>
+</div>
+<p class="text-on-surface-variant text-xs font-bold uppercase tracking-widest mb-1">Total XP</p>
+<h3 class="text-3xl font-black font-headline text-primary">1,240</h3>
+<p class="text-[10px] text-primary/60 mt-2">120 XP para Nivel 43</p>
+</div>
+<div class="glass-panel p-6 rounded-lg relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-5xl">task_alt</span>
+</div>
+<p class="text-on-surface-variant text-xs font-bold uppercase tracking-widest mb-1">Misiones Completadas</p>
+<h3 class="text-3xl font-black font-headline text-on-surface">85</h3>
+<p class="text-[10px] text-on-surface-variant mt-2">+5 esta semana</p>
+</div>
+<div class="glass-panel p-6 rounded-lg relative overflow-hidden group border-primary/20">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-5xl">public</span>
+</div>
+<p class="text-on-surface-variant text-xs font-bold uppercase tracking-widest mb-1">Rango Global</p>
+<h3 class="text-3xl font-black font-headline text-secondary">#412</h3>
+<p class="text-[10px] text-secondary/60 mt-2">Top 2% de jugadores</p>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Progress Visual: Coding Activity -->
+<div class="lg:col-span-2 glass-panel p-8 rounded-lg">
+<div class="flex items-center justify-between mb-8">
+<h4 class="font-headline text-xl font-bold tracking-tight">Actividad de Código</h4>
+<div class="flex gap-1">
+<div class="activity-cell bg-surface-container-highest"></div>
+<div class="activity-cell bg-tertiary/30"></div>
+<div class="activity-cell bg-tertiary/60"></div>
+<div class="activity-cell bg-tertiary"></div>
+</div>
+</div>
+<div class="flex flex-col gap-2 overflow-x-auto scrollbar-hide pb-4">
+<div class="flex gap-1.5">
+<div class="flex flex-col gap-1.5"><div class="activity-cell bg-surface-container-highest"></div><div class="activity-cell bg-primary/20"></div><div class="activity-cell bg-primary/40"></div><div class="activity-cell bg-surface-container-highest"></div><div class="activity-cell bg-tertiary/40"></div><div class="activity-cell bg-tertiary"></div><div class="activity-cell bg-surface-container-highest"></div></div>
+<div class="flex flex-col gap-1.5"><div class="activity-cell bg-tertiary"></div><div class="activity-cell bg-surface-container-highest"></div><div class="activity-cell bg-primary/20"></div><div class="activity-cell bg-primary/80"></div><div class="activity-cell bg-surface-container-highest"></div><div class="activity-cell bg-surface-container-highest"></div><div class="activity-cell bg-tertiary/40"></div></div>
+<div class="flex flex-col gap-1.5"><div class="activity-cell bg-surface-container-highest"></div><div class="activity-cell bg-surface-container-highest"></div><div class="activity-cell bg-tertiary/20"></div><div class="activity-cell bg-tertiary/20"></div><div class="activity-cell bg-primary"></div><div class="activity-cell bg-surface-container-highest"></div><div class="activity-cell bg-surface-container-highest"></div></div>
+<div class="flex flex-col gap-1.5"><div class="activity-cell bg-tertiary/60"></div><div class="activity-cell bg-surface-container-highest"></div><div class="activity-cell bg-surface-container-highest"></div><div class="activity-cell bg-primary/20"></div><div class="activity-cell bg-tertiary/40"></div><div class="activity-cell bg-tertiary"></div><div class="activity-cell bg-surface-container-highest"></div></div>
+<div class="flex flex-col gap-1.5"><div class="activity-cell bg-surface-container-highest"></div><div class="activity-cell bg-primary"></div><div class="activity-cell bg-primary/40"></div><div class="activity-cell bg-surface-container-highest"></div><div class="activity-cell bg-tertiary/40"></div><div class="activity-cell bg-surface-container-highest"></div><div class="activity-cell bg-surface-container-highest"></div></div>
+<div class="flex flex-col gap-1.5"><div class="activity-cell bg-tertiary"></div><div class="activity-cell bg-surface-container-highest"></div><div class="activity-cell bg-surface-container-highest"></div><div class="activity-cell bg-surface-container-highest"></div><div class="activity-cell bg-surface-container-highest"></div><div class="activity-cell bg-tertiary/80"></div><div class="activity-cell bg-tertiary/20"></div></div>
+<div class="flex flex-col gap-1.5"><div class="activity-cell bg-primary/20"></div><div class="activity-cell bg-primary/40"></div><div class="activity-cell bg-tertiary"></div><div class="activity-cell bg-surface-container-highest"></div><div class="activity-cell bg-surface-container-highest"></div><div class="activity-cell bg-surface-container-highest"></div><div class="activity-cell bg-tertiary/20"></div></div>
+<div class="flex flex-col gap-1.5"><div class="activity-cell bg-surface-container-highest"></div><div class="activity-cell bg-tertiary/20"></div><div class="activity-cell bg-primary/60"></div><div class="activity-cell bg-surface-container-highest"></div><div class="activity-cell bg-tertiary/40"></div><div class="activity-cell bg-tertiary"></div><div class="activity-cell bg-surface-container-highest"></div></div>
+<div class="flex flex-col gap-1.5"><div class="activity-cell bg-surface-container-highest"></div><div class="activity-cell bg-surface-container-highest"></div><div class="activity-cell bg-surface-container-highest"></div><div class="activity-cell bg-tertiary/60"></div><div class="activity-cell bg-primary/20"></div><div class="activity-cell bg-surface-container-highest"></div><div class="activity-cell bg-tertiary"></div></div>
+<div class="flex flex-col gap-1.5"><div class="activity-cell bg-tertiary/40"></div><div class="activity-cell bg-primary/80"></div><div class="activity-cell bg-surface-container-highest"></div><div class="activity-cell bg-surface-container-highest"></div><div class="activity-cell bg-surface-container-highest"></div><div class="activity-cell bg-primary/20"></div><div class="activity-cell bg-surface-container-highest"></div></div>
+<div class="flex flex-col gap-1.5"><div class="activity-cell bg-surface-container-highest"></div><div class="activity-cell bg-surface-container-highest"></div><div class="activity-cell bg-primary"></div><div class="activity-cell bg-primary/40"></div><div class="activity-cell bg-surface-container-highest"></div><div class="activity-cell bg-surface-container-highest"></div><div class="activity-cell bg-tertiary"></div></div>
+<div class="flex flex-col gap-1.5"><div class="activity-cell bg-tertiary/80"></div><div class="activity-cell bg-tertiary/20"></div><div class="activity-cell bg-surface-container-highest"></div><div class="activity-cell bg-surface-container-highest"></div><div class="activity-cell bg-primary/60"></div><div class="activity-cell bg-surface-container-highest"></div><div class="activity-cell bg-surface-container-highest"></div></div>
+<div class="flex flex-col gap-1.5"><div class="activity-cell bg-surface-container-highest"></div><div class="activity-cell bg-tertiary/40"></div><div class="activity-cell bg-tertiary"></div><div class="activity-cell bg-surface-container-highest"></div><div class="activity-cell bg-primary/20"></div><div class="activity-cell bg-surface-container-highest"></div><div class="activity-cell bg-tertiary/60"></div></div>
+</div>
+</div>
+</div>
+<!-- Recent Activity List -->
+<div class="glass-panel p-8 rounded-lg flex flex-col h-full">
+<h4 class="font-headline text-xl font-bold tracking-tight mb-8">Auditoría de Terminal</h4>
+<div class="space-y-6 flex-grow">
+<div class="flex items-start gap-4">
+<div class="mt-1 w-2 h-2 rounded-full bg-tertiary neon-glow-tertiary"></div>
+<div>
+<p class="text-sm font-bold text-on-surface">Parser de Descenso Recursivo</p>
+<p class="text-xs text-on-surface-variant">Completó nivel 8 en dificultad Máxima</p>
+<p class="text-[10px] text-primary mt-1">hace 2h • +45 XP</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="mt-1 w-2 h-2 rounded-full bg-primary neon-glow-primary"></div>
+<div>
+<p class="text-sm font-bold text-on-surface">Inversión de Lista Enlazada</p>
+<p class="text-xs text-on-surface-variant">Optimización de desafío diario</p>
+<p class="text-[10px] text-primary mt-1">Ayer • +20 XP</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-[#060e20]/80 backdrop-blur-md px-6 py-4 flex justify-around items-center border-t border-outline-variant/10 z-50">
+<a href="index.html" class="material-symbols-outlined text-[#dae2fd]/40">map</a>
+<a href="lab.html" class="material-symbols-outlined text-[#dae2fd]/40">terminal</a>
+<a href="#" class="material-symbols-outlined text-[#8b5cf6]" style="font-variation-settings: 'FILL' 1;">account_circle</a>
+</nav>
+    <script>
+        function syncProfile() {
+            const stats = JSON.parse(localStorage.getItem('codequest_stats')) || {
+                xp: 1240,
+                streak: 12,
+                completedLessons: []
+            };
+
+            // Actualizar Racha
+            const streakEl = document.querySelector('h3.text-tertiary');
+            if (streakEl) streakEl.innerText = stats.streak + ' días';
+
+            // Actualizar XP
+            const xpEl = document.querySelector('h3.text-primary');
+            if (xpEl) xpEl.innerText = stats.xp.toLocaleString();
+            
+            // Actualizar misiones completadas (segundo h3 de la lista de stats)
+            const statsH3s = document.querySelectorAll('h3.text-on-surface');
+            if (statsH3s.length >= 2) {
+                statsH3s[1].innerText = stats.completedLessons.length;
+            }
+        }
+
+        window.addEventListener('load', syncProfile);
+        window.addEventListener('focus', syncProfile);
+    </script>
+</body>
+</html>
